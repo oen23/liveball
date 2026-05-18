@@ -4,6 +4,7 @@ import datetime
 from sqlalchemy import String, ForeignKey, Integer, JSON
 from sqlalchemy.orm import mapped_column, Mapped, relationship
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import String, ForeignKey, Integer, JSON, Boolean, DateTime  # Добавь Boolean, DateTime
 
 Base = declarative_base()
 
@@ -111,3 +112,12 @@ class Advertisement(Base):
     link: Mapped[Optional[str]] = mapped_column(String(500))  # ДОБАВЛЕНО
     active: Mapped[bool] = mapped_column(default=True)  # ДОБАВЛЕНО
 
+class User(Base):
+    __tablename__ = "users"
+    
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    email: Mapped[str] = mapped_column(String(255), unique=True, nullable=False, index=True)
+    hashed_password: Mapped[str] = mapped_column(String(255), nullable=False)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+    is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
+    created_at: Mapped[datetime.datetime] = mapped_column(DateTime, default=datetime.datetime.utcnow)
