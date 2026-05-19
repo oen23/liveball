@@ -2,7 +2,7 @@ import httpx
 import time
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import County, League, Teams, Base
+from back.src.models import County, League, Teams, Base
 
 # --- НАСТРОЙКА БАЗЫ ДАННЫХ ---
 engine = create_engine(

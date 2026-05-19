@@ -3,7 +3,7 @@ import time
 import json
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import Teams, Player
+from back.src.models import Teams, Player
 
 engine = create_engine('postgresql://myuser:mypassword@localhost:5433/mydatabase', echo=False)
 SessionLocal = sessionmaker(bind=engine)

@@ -2,7 +2,7 @@ import httpx
 import time
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import League, Teams, Player
+from back.src.models import League, Teams, Player
 
 engine = create_engine(
     'postgresql://myuser:mypassword@localhost:5433/mydatabase',
